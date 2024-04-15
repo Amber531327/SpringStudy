@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+    <!-- 被引用类bean声明 -->
+    <bean id="userDao" class="springdi02.UserDao"/>
+    <!-- 引用类bean声明 -->
+    <bean id="userService" class="springdi02.UserService">
+        <!-- 构造函数引用 -->
+<!--        value => 直接属性值 int String...-->
+<!--        ref =>引用其他的bean的id 也就是对象-->
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+<!--    基于构造函数的依赖注入（多构造参数解析）三种方法-->
+    <bean id="userService1" class="springdi02.UserService">
+        <constructor-arg ref="userDao"/>
+        <constructor-arg value="18"/>
+        <constructor-arg value="haha"/>
+    </bean>
+
+    <bean id="userService2" class="springdi02.UserService">
+        <constructor-arg name="UserDao" ref="userDao"/>
+        <constructor-arg name="age" value="18"/>
+        <constructor-arg name="name" value="haha"/>
+    </bean>
+
+    <bean id="userService3" class="springdi02.UserService">
+        <constructor-arg index="2" value="赵伟风"/>
+        <constructor-arg index="0" ref="userDao"/>
+        <constructor-arg index="1"  value="18"/>
+    </bean>
+
+    <bean id="movieFinder" class="springdi02.Movie_Finder"/>
+    <bean id="simpleMovieLister" class="springdi02.SimpleMovieLister">
+        <property name="movieFinder" ref="movieFinder"/>
+        <property name="movieName" value="haha"/>
+    </bean>
+
+
+    <bean id="movieFinder" class="springdi02.Movie_Finder"/>
+    <bean id="simpleMovieLister" class="springdi02.SimpleMovieLister">
+        <property name="movieFinder" ref="movieFinder"/>
+        <property name="movieName" value="haha"/>
+    </bean>
+</beans>

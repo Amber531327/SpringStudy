@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="javabean" class="springiocscope05.JavaBean2" scope="singleton"/>
+        <bean id="javabean2" class="springiocscope05.JavaBean3" scope="prototype"/>
+</beans>
